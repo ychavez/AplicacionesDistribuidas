@@ -1,4 +1,7 @@
 
+using Catalog.Api.DataContext;
+using Microsoft.EntityFrameworkCore;
+
 namespace Catalog.Api
 {
     public class Program
@@ -13,6 +16,10 @@ namespace Catalog.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddDbContext<ProductContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("OrderingConnection")));
+
 
             var app = builder.Build();
 
