@@ -4,8 +4,12 @@ services:
   catalog.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings__OrderingConnection=server=catalogdb;Database=DWshopDiciembre;Encrypt=false;user id=sa;pwd=Hola123!"
     ports:
-      - "80"
+      - "8000:80"
+    container_name: "catalog.api"
+    depends_on:
+      - catalogdb
  
       
   catalogdb:
