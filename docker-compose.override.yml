@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  catalog.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+ 
+      
+  catalogdb:
+   container_name: "catalogdb"
+   environment:
+      SA_PASSWORD: "Hola123!"
+      ACCEPT_EULA: "Y" 
+   ports:
+     - 1433:1433 
+
+
