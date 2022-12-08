@@ -9,3 +9,10 @@ services:
 
   catalogdb:
     image: mcr.microsoft.com/mssql/server
+
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    build:
+      context: .
+      dockerfile: Basket.Api/Dockerfile
+

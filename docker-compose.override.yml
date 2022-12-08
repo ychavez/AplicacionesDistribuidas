@@ -21,3 +21,14 @@ services:
      - 1433:1433 
 
 
+
+  basket.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings__BasketConnection=server=catalogdb;Database=DWshopDiciembre_Basket;Encrypt=false;user id=sa;pwd=Hola123!"
+    ports:
+      - "8001:80"
+    container_name: "basket.api"
+    depends_on:
+     - catalogdb
+
