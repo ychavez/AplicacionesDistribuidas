@@ -16,3 +16,6 @@ services:
       context: .
       dockerfile: Basket.Api/Dockerfile
 
+  rabbitmq:
+     image: rabbitmq:3-management-alpine
+

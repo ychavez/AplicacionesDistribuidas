@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32126.315
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{DE082C0C-C42C-4524-A3E8-9651DE5039A7}"
 EndProject
@@ -21,6 +21,8 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basket.Api", "Basket.Api\Basket.Api.csproj", "{FA6627D7-DB68-4244-9E8B-0E7D4AF4D3FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Messages", "EventBus.Messages\EventBus.Messages.csproj", "{11978844-DABE-47F8-920A-23F2703AAD38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FA6627D7-DB68-4244-9E8B-0E7D4AF4D3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA6627D7-DB68-4244-9E8B-0E7D4AF4D3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA6627D7-DB68-4244-9E8B-0E7D4AF4D3FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11978844-DABE-47F8-920A-23F2703AAD38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11978844-DABE-47F8-920A-23F2703AAD38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11978844-DABE-47F8-920A-23F2703AAD38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11978844-DABE-47F8-920A-23F2703AAD38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,6 +56,7 @@ Global
 		{69BEF121-DDF8-4730-9303-DC7434806CC3} = {15180736-4DE1-4E23-8D3C-323FF4C79CE9}
 		{147EA597-DF4B-4296-8C09-2701A893D545} = {69BEF121-DDF8-4730-9303-DC7434806CC3}
 		{FA6627D7-DB68-4244-9E8B-0E7D4AF4D3FB} = {D6B763D5-E727-44ED-89E0-D4829ACFCB80}
+		{11978844-DABE-47F8-920A-23F2703AAD38} = {DE082C0C-C42C-4524-A3E8-9651DE5039A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {69D939C0-1151-430D-A866-FAECD82B349B}
