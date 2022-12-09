@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using Microsoft.EntityFrameworkCore;
 using Ordering.Domain.Common;
 using Ordering.Infraestructure.Persistence;
@@ -34,9 +35,41 @@ public class GenericRepository<T> where T : EntityBase
     public async Task<IReadOnlyList<T>> GetAllAsync(int offset, int limit, Expression<Func<T, bool>>? predicate,
         Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy, params string[] includeStrings)
     {
+        IQueryable<T> query = _orderContext.Set<T>();
+       
+        query = query.Skip(offset).Take(limit);
 
+        query = includeStrings.Aggregate(query, (current, itemInclude) => current.Include(itemInclude));
+
+        if (predicate is not null)
+            query = query.Where(predicate);
+
+        if (orderBy is not null)
+            return await orderBy(query).ToListAsync();
+
+        return await query.ToListAsync();
     }
 
+    public async Task<T> AddAsync(T entity)
+    {
+        await _orderContext.Set<T>().AddAsync(entity);
+        await _orderContext.SaveChangesAsync();
+        return entity;
+    }
 
+    public async Task UpdateAsync(T entity)
+    {
+        _orderContext.Entry(entity).State = EntityState.Modified;
+        await _orderContext.SaveChangesAsync();
+    }
+
+    public async Task DeleteAsync(T entity)
+    {
+        _orderContext.Set<T>().Remove(entity);
+        await _orderContext.SaveChangesAsync();
+    }
+
+    public async Task<T> GetById(int id)
+         => await _orderContext.Set<T>().SingleAsync(x => x.Id == id);
 }
 
