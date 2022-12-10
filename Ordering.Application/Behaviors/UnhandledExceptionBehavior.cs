@@ -15,10 +15,10 @@ namespace Ordering.Application.Behaviors
             {
                 return await next();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw new Exception($"Ocurrio un error en la peticion de {typeof(TRequest)}", ex);
             }
         }
     }

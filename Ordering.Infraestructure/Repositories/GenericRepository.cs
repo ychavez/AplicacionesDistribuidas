@@ -1,12 +1,12 @@
-﻿using System.Linq.Expressions;
-using System.Runtime.InteropServices;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Ordering.Application.Contracts;
 using Ordering.Domain.Common;
 using Ordering.Infraestructure.Persistence;
+using System.Linq.Expressions;
 
 namespace Ordering.Infraestructure.Repositories;
 
-public class GenericRepository<T> where T : EntityBase
+public class GenericRepository<T> : IGenericRepository<T> where T : EntityBase
 {
     private readonly OrderContext _orderContext;
 
@@ -36,7 +36,7 @@ public class GenericRepository<T> where T : EntityBase
         Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy, params string[] includeStrings)
     {
         IQueryable<T> query = _orderContext.Set<T>();
-       
+
         query = query.Skip(offset).Take(limit);
 
         query = includeStrings.Aggregate(query, (current, itemInclude) => current.Include(itemInclude));
