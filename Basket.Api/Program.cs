@@ -1,6 +1,7 @@
 
 using Basket.Api.DataContext;
 using Basket.Api.Repositories;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 
 namespace Basket.Api
@@ -22,6 +23,17 @@ namespace Basket.Api
             options.UseSqlServer(builder.Configuration.GetConnectionString("BasketConnection")));
 
             builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+
+            builder.Services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((ctx, cfg) =>
+                {
+                    cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+                });
+            });
+
+
+            builder.Services.AddMassTransitHostedService();
 
             var app = builder.Build();
 
