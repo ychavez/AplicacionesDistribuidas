@@ -26,3 +26,10 @@ services:
       context: .
       dockerfile: Ordering.Api/Dockerfile
 
+
+  api.gateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: Api.Gateway/Dockerfile
+

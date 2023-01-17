@@ -33,7 +33,7 @@ namespace Basket.Api
             });
 
 
-            builder.Services.AddMassTransitHostedService();
+          //  builder.Services.AddMassTransitHostedService();
 
             var app = builder.Build();
 

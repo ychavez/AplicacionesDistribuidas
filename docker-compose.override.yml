@@ -26,10 +26,12 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ConnectionStrings__BasketConnection=server=catalogdb;Database=DWshopDiciembre_Basket;Encrypt=false;user id=sa;pwd=Hola123!"
+      - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
     ports:
       - "8001:80"
     container_name: "basket.api"
     depends_on:
+     - rabbitmq
      - catalogdb
 
   rabbitmq:
@@ -42,6 +44,20 @@ services:
   ordering.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
+      - "ConnectionStrings__OrderingConnectionString=server=catalogdb;Database=DWshopDiciembre_Ordering;Encrypt=false;user id=sa;pwd=Hola123!"
+      #puertos
     ports:
-      - "80"
+      - "8002:80"
+    container_name: ordering.api
+    depends_on:
+     - rabbitmq
+     - catalogdb
+
+
+  api.gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "88"
 
