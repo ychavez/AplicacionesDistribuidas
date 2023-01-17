@@ -1,7 +1,7 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/v1/Catalog",
+      "DownstreamPathTemplate": "/api/Products",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -14,7 +14,7 @@
       "FileCacheOptions": { "TtlSeconds": 30 }
     },
     {
-      "DownstreamPathTemplate": "/api/v1/Catalog/{id}",
+      "DownstreamPathTemplate": "/api/Products/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -24,18 +24,6 @@
       ],
       "UpstreamPathTemplate": "/Catalog/{id}",
       "UpstreamHttpMethod": [ "GET", "DELETE" ]
-    },
-    {
-      "DownstreamPathTemplate": "/api/v1/Catalog/GetProductByCategory/{category}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": "8000"
-        }
-      ],
-      "UpstreamPathTemplate": "/Catalog/GetProductByCategory/{category}",
-      "UpstreamHttpMethod": [ "GET" ]
     },
     //Basket API
     {

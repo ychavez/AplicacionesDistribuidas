@@ -13,4 +13,16 @@
     <PackageReference Include="Ocelot" Version="18.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Configuration\ocelot.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Configuration\ocelot.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Configuration\ocelot.Local.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

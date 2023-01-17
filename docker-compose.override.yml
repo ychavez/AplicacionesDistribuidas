@@ -59,5 +59,6 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - "88"
+      - "8003:80"
+    container_name: api.gateway
 

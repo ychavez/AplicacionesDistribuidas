@@ -1,12 +1,12 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/v1/Catalog",
+      "DownstreamPathTemplate": "/api/Products",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "8000"
+          "Host": "catalog.api",
+          "Port": "80"
         }
       ],
       "UpstreamPathTemplate": "/Catalog",
@@ -14,12 +14,12 @@
       "FileCacheOptions": { "TtlSeconds": 30 }
     },
     {
-      "DownstreamPathTemplate": "/api/v1/Catalog/{id}",
+      "DownstreamPathTemplate": "/api/Products/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "8000"
+          "Host": "catalog.api",
+          "Port": "80"
         }
       ],
       "UpstreamPathTemplate": "/Catalog/{id}",
@@ -85,6 +85,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:54322"
+    "BaseUrl": "http://localhost:49797/"
   }
 }
