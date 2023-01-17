@@ -22,5 +22,7 @@ public class GetOrdersListQueryHandler : IRequestHandler<GetOrdersListQuery, Lis
 
         return mapper.Map<List<OrdersListViewModel>>(orders);
     }
+
+
 }
 

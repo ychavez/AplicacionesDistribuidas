@@ -1,3 +1,5 @@
+using EventBus.Messages.Common;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Ordering.Application;
 using Ordering.Application.Contracts;
@@ -26,6 +28,30 @@ namespace Ordering.Api
 
 
             builder.Services.AddApplicationServices();
+
+
+            builder.Services.AddMassTransit(x =>
+            {
+
+                /// le especificamos  que este sera el consummer
+                x.AddConsumer<EventBusConsumer.EventBusConsumer>();
+
+                x.UsingRabbitMq((ctx, cfg) =>
+                {
+
+                    cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+
+                    cfg.ReceiveEndpoint(EventBusConstants.BasketCheckoutQueue, c =>
+                    {
+
+                        c.ConfigureConsumer<EventBusConsumer.EventBusConsumer>(ctx);
+
+                    });
+
+
+                });
+
+            });
 
 
             var app = builder.Build();
