@@ -53,6 +53,10 @@ namespace Ordering.Api
 
             });
 
+            builder.Services.AddScoped<EventBusConsumer.EventBusConsumer>();
+
+            builder.Services.AddAutoMapper(typeof(Program));
+
 
             var app = builder.Build();
 
