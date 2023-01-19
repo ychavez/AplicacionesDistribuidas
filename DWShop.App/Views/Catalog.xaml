@@ -24,19 +24,19 @@
                             </Grid.RowDefinitions>
 
                             <Frame  HasShadow="True" Padding="0" CornerRadius="100" Grid.RowSpan="3" >
-                                <Image Source="{Binding PhotoURL}" />
+                                <Image Source="{Binding image}" />
                             </Frame>
 
-                            <Label Text="{Binding Description}" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" FontSize="25" 
-                   FontAttributes="Bold"/>
+                            <Label Text="{Binding title}" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" FontSize="25" 
+                                   FontAttributes="Bold"/>
 
-                            <Label Text="{Binding Description}" Grid.Column="1"
-                   Grid.ColumnSpan="2" Grid.Row="1" HorizontalOptions="Center"
-                   VerticalOptions="Center"/>
+                            <Label Text="{Binding description}" Grid.Column="1"
+                                   Grid.ColumnSpan="2" Grid.Row="1" HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
 
-                            <Label Text="{Binding Price,StringFormat='{0:C}'}" Grid.Column="2" Grid.Row="2"
-                   HorizontalOptions="End" VerticalOptions="End" 
-                   FontAttributes="Bold"/>
+                            <Label Text="{Binding price,StringFormat='{0:C}'}" Grid.Column="2" Grid.Row="2"
+                                    HorizontalOptions="End" VerticalOptions="End" 
+                                    FontAttributes="Bold"/>
 
                             <ImageButton/>
 

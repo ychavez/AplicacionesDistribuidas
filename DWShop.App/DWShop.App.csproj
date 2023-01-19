@@ -53,10 +53,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Context\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="Views\Catalog.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
