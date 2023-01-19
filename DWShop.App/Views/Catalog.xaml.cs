@@ -21,7 +21,7 @@ public partial class Catalog : ContentPage
 
     {
 
-        var data = await (new RestService().GetDataAsync<Product>("products"));
+        var data = await (new RestService().GetDataAsync<Product>("catalog"));
         return data;
     }
 

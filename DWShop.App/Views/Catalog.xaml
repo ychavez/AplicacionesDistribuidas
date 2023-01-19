@@ -24,17 +24,17 @@
                             </Grid.RowDefinitions>
 
                             <Frame  HasShadow="True" Padding="0" CornerRadius="100" Grid.RowSpan="3" >
-                                <Image Source="{Binding image}" />
+                                <Image Source="{Binding PhotoURL}" />
                             </Frame>
 
-                            <Label Text="{Binding title}" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" FontSize="25" 
+                            <Label Text="{Binding Name}" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" FontSize="25" 
                                    FontAttributes="Bold"/>
 
-                            <Label Text="{Binding description}" Grid.Column="1"
+                            <Label Text="{Binding Description}" Grid.Column="1"
                                    Grid.ColumnSpan="2" Grid.Row="1" HorizontalOptions="Center"
                                    VerticalOptions="Center"/>
 
-                            <Label Text="{Binding price,StringFormat='{0:C}'}" Grid.Column="2" Grid.Row="2"
+                            <Label Text="{Binding Price,StringFormat='{0:C}'}" Grid.Column="2" Grid.Row="2"
                                     HorizontalOptions="End" VerticalOptions="End" 
                                     FontAttributes="Bold"/>
 

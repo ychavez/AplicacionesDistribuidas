@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
 
 namespace DWShop.App.Context
@@ -13,12 +14,12 @@ namespace DWShop.App.Context
 
         public RestService()
         {
-            _urlBase = new Uri("https://fakestoreapi.com/");
+            _urlBase = new Uri("http://gdlsoft.ddns.net:99/");
             _client = new HttpClient();
             _client.BaseAddress = _urlBase;
         }
 
-        public async Task<List<T>> GetDataAsync<T>(string url) 
+        public async Task<List<T>> GetDataAsync<T>(string url)
         {
             List<T> TData = null;
 
@@ -29,8 +30,6 @@ namespace DWShop.App.Context
                 {
 
                     TData = await response.Content.ReadFromJsonAsync<List<T>>();
-                   
-
                 }
             }
             catch (Exception ex)
@@ -40,7 +39,17 @@ namespace DWShop.App.Context
             }
 
             return TData;
-        
+        }
+
+
+        public async Task PostDataAsync<T>(T data, string url)
+        {
+            var json = JsonSerializer.Serialize(data);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await _client.PostAsync(url, content);
+
+            if (!response.IsSuccessStatusCode)
+                throw new Exception(await response.Content.ReadAsStringAsync());
         }
 
 
