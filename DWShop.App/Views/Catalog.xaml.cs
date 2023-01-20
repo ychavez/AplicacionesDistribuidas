@@ -8,21 +8,37 @@ public partial class Catalog : ContentPage
     public Catalog()
     {
         InitializeComponent();
+        
+        
     }
 
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        ProductsList.ItemsSource = null;
+    }
 
     protected override async void OnAppearing()
     {
-        ProductsList.ItemsSource = await GetProducts();
-        base.OnAppearing();
+        products = await new RestService().GetDataAsync<Product>("catalog");
+
+        ProductsList.ItemsSource = products ?? new();
+       /// base.OnAppearing();
     }
 
-    public async Task<List<Product>> GetProducts()
+    public List<Product> products { get; set; } = new();
+     
 
+
+
+    private async void ToolbarItem_Clicked(object sender, EventArgs e)
     {
-
-        var data = await (new RestService().GetDataAsync<Product>("catalog"));
-        return data;
+        await Navigation.PushAsync(new Carrito());
     }
 
+    private void ImageButton_Clicked(object sender, EventArgs e)
+    {
+        var product = (Product)((ImageButton)sender).BindingContext;
+    }
 }

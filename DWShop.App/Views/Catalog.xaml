@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DWShop.App.Views.Catalog"
              Title="Catalog">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Carrito" Clicked="ToolbarItem_Clicked">
+            
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ListView x:Name="ProductsList" RowHeight="150">
         <ListView.ItemTemplate>
             <DataTemplate>
@@ -38,7 +43,9 @@
                                     HorizontalOptions="End" VerticalOptions="End" 
                                     FontAttributes="Bold"/>
 
-                            <ImageButton/>
+                            <ImageButton Source="trolley" Grid.Row="2" Grid.Column="1" 
+                                         HorizontalOptions="End" VerticalOptions="End" 
+                                         Clicked="ImageButton_Clicked"/>
 
                         </Grid>
                     </Frame>
