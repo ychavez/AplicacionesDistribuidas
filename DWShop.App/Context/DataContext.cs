@@ -16,8 +16,16 @@ namespace DWShop.App.Context
 
             db = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, "DWShop.db3")
                 , SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
+            try
+            {
 
             await db.CreateTableAsync<Product>();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
 

@@ -49,6 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\favourite.png" />
 	  <None Remove="Resources\Images\trolley.png" />
 	</ItemGroup>
 

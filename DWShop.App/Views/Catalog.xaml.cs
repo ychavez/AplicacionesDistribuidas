@@ -62,4 +62,11 @@ public partial class Catalog : ContentPage
         await new RestService().PostDataAsync(shoppingCart, "Basket");
 
     }
+
+    private async void ImageButton_Clicked_1(object sender, EventArgs e)
+    {
+        var product = (Product)((ImageButton)sender).BindingContext;
+
+        await new DataContext().SetFavorite(product);
+    }
 }

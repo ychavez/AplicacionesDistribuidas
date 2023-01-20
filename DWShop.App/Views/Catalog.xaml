@@ -13,7 +13,7 @@
             <DataTemplate>
                 <ViewCell>
                     
-                    <Frame HeightRequest="150" >
+                    <Frame HeightRequest="150" Padding="3" >
                         <Grid>
 
                             <Grid.ColumnDefinitions>
@@ -27,8 +27,10 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
+                           
 
-                            <Frame  HasShadow="True" Padding="0" CornerRadius="100" Grid.RowSpan="3" >
+                            <Frame  HasShadow="True" Padding="0" ZIndex="0"
+                                    CornerRadius="100" Grid.RowSpan="3"  >
                                 <Image Source="{Binding PhotoURL}" />
                             </Frame>
 
@@ -41,12 +43,22 @@
 
                             <Label Text="{Binding Price,StringFormat='{0:C}'}" Grid.Column="2" Grid.Row="2"
                                     HorizontalOptions="End" VerticalOptions="End" 
-                                    FontAttributes="Bold"/>
+                                    FontAttributes="Bold" />
 
-                            <ImageButton Source="trolley" Grid.Row="2" Grid.Column="1" 
-                                         HorizontalOptions="End" VerticalOptions="End" 
-                                         Clicked="ImageButton_Clicked"/>
+                           
+                                <ImageButton Source="favourite" 
+                                             Grid.Column="2" 
+                                             Padding="0,0,40,0" 
+                                             Grid.Row="2" HorizontalOptions="End" 
+                                             Clicked="ImageButton_Clicked_1" />
+                            
+                            <ImageButton Source="trolley" 
+                                         Grid.Column="1"
+                                         Grid.Row="2" Clicked="ImageButton_Clicked" 
+                                         HorizontalOptions="Start"/>
 
+                           
+                            
                         </Grid>
                     </Frame>
 

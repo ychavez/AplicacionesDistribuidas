@@ -1,7 +1,9 @@
-﻿namespace DWShop.App.Models
+﻿using SQLite;
+
+namespace DWShop.App.Models
 {
     public class Product
-    {
+    { [PrimaryKey,AutoIncrement]
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public string Category { get; set; } = null!;
