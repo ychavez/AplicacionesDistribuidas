@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DWShop.App.Views.Chekout"
+             Title="Chekout">
+    <VerticalStackLayout>        <Entry Placeholder="Usuario" x:Name="txtUsuario"  />        <Entry Placeholder="Nombre" x:Name="txtNombre" />        <Entry Placeholder="Apellido"  x:Name="txtApellido" />        <Entry Placeholder="Direccion" x:Name="txtDireccion" />        <Entry Placeholder="Correo" Keyboard="Email" x:Name="txtCorreo" />        <Entry Placeholder="Pais" x:Name="txtPais" />        <Entry Placeholder="Estado"  x:Name="txtEstado" />        <Entry Placeholder="CP" Keyboard="Numeric" x:Name="txtCP" />        <Entry Placeholder="Tarjeta"  x:Name="txtTarjeta" />        <Entry Placeholder="Numero Tarjeta" x:Name="txtTajetaNumero" />        <Entry Placeholder="EXP" x:Name="txtEXP" />        <Entry Placeholder="CVV" Keyboard="Numeric"  x:Name="txtCVV" />        <Button Text="Checkout" Clicked="Button_Clicked"></Button>    </VerticalStackLayout>
+</ContentPage>

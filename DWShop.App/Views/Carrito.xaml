@@ -4,7 +4,7 @@
              x:Class="DWShop.App.Views.Carrito"
              Title="Carrito">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Checkout" >
+        <ToolbarItem Text="Checkout" Clicked="ToolbarItem_Clicked" >
 
         </ToolbarItem>
     </ContentPage.ToolbarItems>

@@ -66,6 +66,9 @@
 	  <MauiXaml Update="Views\Catalog.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Chekout.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Favoritos.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

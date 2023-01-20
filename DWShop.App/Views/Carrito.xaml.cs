@@ -23,4 +23,9 @@ public partial class Carrito : ContentPage
         cartList.ItemsSource = null;
         base.OnDisappearing();
     }
+
+    private void ToolbarItem_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new Chekout());
+    }
 }

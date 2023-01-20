@@ -8,8 +8,6 @@ public partial class Catalog : ContentPage
     public Catalog()
     {
         InitializeComponent();
-
-
     }
 
 
@@ -21,9 +19,11 @@ public partial class Catalog : ContentPage
 
     protected override async void OnAppearing()
     {
+        MainActivity.IsVisible = true;
         products = await new RestService().GetDataAsync<Product>("catalog");
 
         ProductsList.ItemsSource = products ?? new();
+        MainActivity.IsVisible = false;
         /// base.OnAppearing();
     }
 
@@ -40,6 +40,7 @@ public partial class Catalog : ContentPage
 
     private async void ImageButton_Clicked(object sender, EventArgs e)
     {
+        MainActivity.IsVisible = true;
         var product = (Product)((ImageButton)sender).BindingContext;
 
         var shoppingCart = new ShoppingCart()
@@ -61,6 +62,9 @@ public partial class Catalog : ContentPage
 
         await new RestService().PostDataAsync(shoppingCart, "Basket");
 
+        MainActivity.IsVisible = false;
+
+        await DisplayAlert("Hecho!", $"Tu producto {product.Name} fue agregado al carrito!","Ok");
     }
 
     private async void ImageButton_Clicked_1(object sender, EventArgs e)
