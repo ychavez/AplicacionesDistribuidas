@@ -8,8 +8,8 @@ public partial class Catalog : ContentPage
     public Catalog()
     {
         InitializeComponent();
-        
-        
+
+
     }
 
 
@@ -24,11 +24,11 @@ public partial class Catalog : ContentPage
         products = await new RestService().GetDataAsync<Product>("catalog");
 
         ProductsList.ItemsSource = products ?? new();
-       /// base.OnAppearing();
+        /// base.OnAppearing();
     }
 
     public List<Product> products { get; set; } = new();
-     
+
 
 
 
@@ -37,8 +37,29 @@ public partial class Catalog : ContentPage
         await Navigation.PushAsync(new Carrito());
     }
 
-    private void ImageButton_Clicked(object sender, EventArgs e)
+
+    private async void ImageButton_Clicked(object sender, EventArgs e)
     {
         var product = (Product)((ImageButton)sender).BindingContext;
+
+        var shoppingCart = new ShoppingCart()
+        {
+            TotalPrice = 1000,
+            UserName = "Yael",
+
+            ShoppingCartItems = new List<ShoppingCartItem>
+            {
+                new ShoppingCartItem
+                {
+                    ProductId = product.Id,
+                    Price = product.Price,
+                    ProductName = product.Name,
+                    Quantity = 1
+                }
+            }
+        };
+
+        await new RestService().PostDataAsync(shoppingCart, "Basket");
+
     }
 }

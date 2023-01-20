@@ -19,6 +19,29 @@ namespace DWShop.App.Context
             _client.BaseAddress = _urlBase;
         }
 
+        public async Task<T> GetSingleAsync<T>(string url) 
+        {
+           T TData = default;
+
+            try
+            {
+                var response = await _client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+
+                    TData = await response.Content.ReadFromJsonAsync<T>();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Debug.WriteLine($"Error {ex.Message}");
+            }
+
+            return TData;
+
+        }
+
         public async Task<List<T>> GetDataAsync<T>(string url)
         {
             List<T> TData = null;

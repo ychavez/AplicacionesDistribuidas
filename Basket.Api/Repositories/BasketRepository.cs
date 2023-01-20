@@ -15,6 +15,7 @@ namespace Basket.Api.Repositories
         }
 
         private async Task<ShoppingCart?> FindBasket(string userName)
+ 
             => await basketContext
                .ShoppingCarts
                .Include(d => d.ShoppingCartItems)

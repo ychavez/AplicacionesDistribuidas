@@ -9,7 +9,7 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
-    <ListView>
+    <ListView x:Name="cartList" RowHeight="60">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
@@ -28,10 +28,10 @@
                                 <Image Source="dotnet_bot"/>
                             </Frame>
 
-                            <Label Text="Descripcion de producto" Grid.Column="1" 
+                            <Label Text="{Binding ProductName}" Grid.Column="1" 
                    HorizontalOptions="Center" VerticalOptions="Center"/>
 
-                            <Label Text="$500.00" Grid.Column="2" FontAttributes="Bold"
+                            <Label Text="{Binding Price, StringFormat='{0:C}'}" Grid.Column="2" FontAttributes="Bold"
                    HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Grid>
                     </Frame>
