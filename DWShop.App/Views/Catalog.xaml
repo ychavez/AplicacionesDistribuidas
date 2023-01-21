@@ -9,8 +9,8 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <ActivityIndicator Color="Blue" IsRunning="True" IsVisible="True" x:Name="MainActivity"/>
-        <ListView x:Name="ProductsList" RowHeight="150">
+        <ActivityIndicator Color="Blue" IsRunning="True" IsVisible="False" x:Name="MainActivity"/>
+        <ListView x:Name="ProductsList" RowHeight="150"   >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>

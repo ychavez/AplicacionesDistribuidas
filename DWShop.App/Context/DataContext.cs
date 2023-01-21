@@ -19,7 +19,7 @@ namespace DWShop.App.Context
             try
             {
 
-            await db.CreateTableAsync<Product>();
+                await db.CreateTableAsync<Product>();
             }
             catch (Exception ex)
             {

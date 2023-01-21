@@ -40,6 +40,7 @@ public partial class Catalog : ContentPage
 
     private async void ImageButton_Clicked(object sender, EventArgs e)
     {
+        ProductsList.IsRefreshing = true;
         MainActivity.IsVisible = true;
         var product = (Product)((ImageButton)sender).BindingContext;
 
@@ -61,8 +62,9 @@ public partial class Catalog : ContentPage
         };
 
         await new RestService().PostDataAsync(shoppingCart, "Basket");
-
+        ProductsList.IsRefreshing = false;
         MainActivity.IsVisible = false;
+
 
         await DisplayAlert("Hecho!", $"Tu producto {product.Name} fue agregado al carrito!","Ok");
     }

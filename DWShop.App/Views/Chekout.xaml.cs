@@ -40,4 +40,16 @@ public partial class Chekout : ContentPage
     {
         await Checkout();
     }
+
+    private async void Button_Clicked_1(object sender, EventArgs e)
+    {
+       // var photo = await MediaPicker.Default.CapturePhotoAsync();
+     //   img.Source = ImageSource.FromStream(async x => await photo.OpenReadAsync());
+        await TextToSpeech.Default.SpeakAsync("Fotografia tomada con exito");
+
+       await Flashlight.TurnOnAsync();
+       await Flashlight.TurnOffAsync();
+
+        var location = await Geolocation.Default.GetLocationAsync();
+    }
 }
