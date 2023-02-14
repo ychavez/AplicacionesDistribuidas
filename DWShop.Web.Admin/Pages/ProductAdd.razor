@@ -1,0 +1,58 @@
+﻿@page "/productadd"
+@using DWShop.Web.Admin.Services.Contracts;
+@using DWShop.Web.Common.Models;
+@inject IProductService productService
+
+<EditForm OnValidSubmit="AddProduct" Model="product" method="post">
+    <DataAnnotationsValidator/>
+
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <InputText @bind-Value="product.Name" class="form-control"></InputText>
+        <ValidationMessage For="()=>product.Name"></ValidationMessage>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Descripcion</label>
+        <InputText @bind-Value="product.Description" class="form-control"></InputText>
+        <ValidationMessage For="()=>product.Description"></ValidationMessage>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Categoria</label>
+        <InputText @bind-Value="product.Category" class="form-control"></InputText>
+        <ValidationMessage For="()=>product.Category"></ValidationMessage>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">URL foto</label>
+        <InputText @bind-Value="product.PhotoURL" class="form-control"></InputText>
+        <ValidationMessage For="()=>product.PhotoURL"></ValidationMessage>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Descripcion larga</label>
+        <InputText @bind-Value="product.Summary" class="form-control"></InputText>
+        <ValidationMessage For="()=>product.Summary"></ValidationMessage>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Precio</label>
+        <InputNumber @bind-Value="product.Price" class="form-control"></InputNumber>
+        <ValidationMessage For="()=>product.Price"></ValidationMessage>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Agregar</button>
+</EditForm>
+
+@code {
+    private Product product = new();
+
+    private async Task AddProduct()
+    {
+        await productService.CreateProduct(product);
+
+
+
+
+
+    }
+
+}

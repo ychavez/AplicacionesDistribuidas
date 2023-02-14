@@ -1,0 +1,61 @@
+﻿@page "/products"
+@using DWShop.Web.Admin.Services.Contracts;
+@using DWShop.Web.Common.Models;
+@inject IProductService productService
+
+
+<div class="row">
+    <button class="btn btn-primary col-2 offset-10">Agregar</button>
+</div>
+
+<div class="row">
+
+<h3>Products</h3>
+
+@if (productList is not null)
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th>Desctipcion</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var product in productList)
+            {
+                <tr>
+                    <td>
+                        @product.Name
+                    </td>
+                    <td>
+                        @product.Category
+                    </td>
+                    <td>
+                        @product.Description
+                    </td>
+                    <td>
+                        @product.Price
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+}
+
+</div>
+
+@code {
+    List<Product> productList = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        productList = await productService.GetProducts();
+    }
+
+}
