@@ -1,24 +1,18 @@
-﻿<div class="col-lg-1 col-lg-4 col-md-6">
+﻿@using DWShop.Web.Common.Models;
+<div class="col-lg-1 col-lg-4 col-md-6">
 
     <div class="card" style="width: 18rem;">
-        <img src="@PhotoURL" class="card-img-top" alt="...">
+        <img src="@product.PhotoURL" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">@Name</h5>
-            <p class="card-text">@Summary</p>
-            <a href="#" class="btn btn-primary">Agregar a carrito</a>
+            <h5 class="card-title">@product.Name</h5>
+            <p class="card-text">@product.Summary</p>
+            <a href="/details/@product.Id" class="btn btn-primary">Detalles</a>
         </div>
     </div>
 </div>
 
 @code {
-
     [Parameter]
-    public string Name { get; set; } = "";
-
-    [Parameter]
-    public string Summary { get; set; } = "";
-
-    [Parameter]
-    public string PhotoURL { get; set; } = "";
+    public Product product { get; set; } = new();
 
 }

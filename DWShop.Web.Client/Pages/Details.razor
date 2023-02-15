@@ -1,0 +1,57 @@
+﻿@page "/details/{ProductId}"
+
+
+<h3>Details</h3>
+<div class="card container mt-4">
+    <div class="card-header ml-10 row">
+        <div class="col-12 col-md-6">
+            <h2 class="text-primary">Encabezado</h2>
+        </div>
+
+    </div>
+
+    <div class="col-12 col-md-6 text-end pt-4">
+
+        <span class="badge bg-info pt-2" >
+            Categoria del producto
+        </span>
+
+        <span class="badge bg-warning pt-2">
+            Descripcion del producto
+        </span>
+
+    </div>
+
+    <div class="card-body">
+        <div class="container rounded p-2">
+            <div class="row">
+                <div class="col-6 bg-light texr-center">
+                    <img src="https://m.media-amazon.com/images/I/61C16URsWnL._AC_SX522_.jpg" class="rounded"/>
+                </div>
+                <div class="col-2 pt-2 m-2 bg-light text-center">
+                    <p>3500.00</p>
+                </div>
+                <div class="col-2">
+                    <p>Aqui la descripcion del product</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-6">
+                <a class="btn btn-primary form-control" href="/">Regresar a inicio</a>
+            </div>
+            <div class="col-6">
+                 <button type="submit" class="btn btn-primary form-control" href="/">agregar a carrito</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+@code {
+
+}

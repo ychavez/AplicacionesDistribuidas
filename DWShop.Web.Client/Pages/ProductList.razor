@@ -9,10 +9,7 @@
 
     @foreach (var product in Products)
     {
-        <ProductCard Name="@product.Name"
-                 PhotoURL="@product.PhotoURL"
-                 Summary="@product.Summary">
-        </ProductCard>
+        <ProductCard  product="product"/>
     }
 
 </div>
