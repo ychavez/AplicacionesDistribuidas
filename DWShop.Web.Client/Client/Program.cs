@@ -1,4 +1,6 @@
 using DWShop.Web.Client;
+using DWShop.Web.Client.Services;
+using DWShop.Web.Client.Services.Contracts;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -14,7 +16,9 @@ namespace DWShop.Web.Client
 
             builder.Services.AddScoped(sp => 
             new HttpClient { BaseAddress = 
-            new Uri(builder.HostEnvironment.BaseAddress) });
+            new Uri("http://gdlsoft.ddns.net:99/") });
+
+            builder.Services.AddScoped<IProductService, ProductService>();
 
             await builder.Build().RunAsync();
         }

@@ -57,7 +57,14 @@ namespace Ordering.Api
 
             builder.Services.AddAutoMapper(typeof(Program));
 
-
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    policy =>
+                    {
+                        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                    });
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -66,7 +73,13 @@ namespace Ordering.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
             app.UseAuthorization();
 
 

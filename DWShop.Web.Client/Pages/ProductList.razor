@@ -1,0 +1,28 @@
+﻿@page "/products"
+@using DWShop.Web.Client.Components
+@using DWShop.Web.Client.Services.Contracts;
+@using DWShop.Web.Common.Models;
+@inject IProductService productService
+
+<h3>ProductList</h3>
+<div class="row">
+
+    @foreach (var product in Products)
+    {
+        <ProductCard Name="@product.Name"
+                 PhotoURL="@product.PhotoURL"
+                 Summary="@product.Summary">
+        </ProductCard>
+    }
+
+</div>
+
+@code {
+    List<Product> Products = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Products = await productService.GetAllAsync();
+    }
+
+}

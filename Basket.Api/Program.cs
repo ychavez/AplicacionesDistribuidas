@@ -31,9 +31,16 @@ namespace Basket.Api
                     cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
                 });
             });
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    policy =>
+                    {
+                        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();  
+                    });
+            });
 
-
-          //  builder.Services.AddMassTransitHostedService();
+            //  builder.Services.AddMassTransitHostedService();
 
             var app = builder.Build();
 
@@ -43,7 +50,13 @@ namespace Basket.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
             app.UseAuthorization();
 
 
