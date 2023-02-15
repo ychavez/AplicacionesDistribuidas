@@ -11,6 +11,7 @@ namespace DWShop.Web.Client.Services
         public ProductService(HttpClient httpClient)
         {
             this.httpClient = httpClient ?? throw new ArgumentException(nameof(httpClient));
+           
         }
 
         public async Task<List<Product>> GetAllAsync()
