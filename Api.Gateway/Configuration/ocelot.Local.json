@@ -10,7 +10,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Catalog",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
+      "UpstreamHttpMethod": [ "GET", "POST" ],
       "FileCacheOptions": { "TtlSeconds": 30 }
     },
     {
@@ -23,7 +23,7 @@
         }
       ],
       "UpstreamPathTemplate": "/Catalog/{id}",
-      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+      "UpstreamHttpMethod": [ "GET", "DELETE","PUT" ]
     },
     //Basket API
     {

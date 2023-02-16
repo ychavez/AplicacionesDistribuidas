@@ -19,6 +19,7 @@ namespace DWShop.Web.Client
             new Uri("http://gdlsoft.ddns.net:99/") });
 
             builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<IBasketService, BasketService>();
 
             await builder.Build().RunAsync();
         }

@@ -4,7 +4,7 @@
     {
         public string UserName { get; set; } = null!;
         public decimal TotalPrice { get; set; }
-        public List<BasketItemDTO> Items { get; set; } = new();
+        public List<BasketItemDTO> ShoppingCartItems { get; set; } = new();
     }
     public class BasketItemDTO 
     {

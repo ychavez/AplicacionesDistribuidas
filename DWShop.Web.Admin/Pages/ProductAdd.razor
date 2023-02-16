@@ -2,6 +2,7 @@
 @using DWShop.Web.Admin.Services.Contracts;
 @using DWShop.Web.Common.Models;
 @inject IProductService productService
+@inject NavigationManager navigationManager
 
 <EditForm OnValidSubmit="AddProduct" Model="product" method="post">
     <DataAnnotationsValidator/>
@@ -48,10 +49,7 @@
     private async Task AddProduct()
     {
         await productService.CreateProduct(product);
-
-
-
-
+        navigationManager.NavigateTo("/Products");
 
     }
 

@@ -1,0 +1,74 @@
+﻿@page "/ProductEdit/{ProductId:int}"
+@using DWShop.Web.Admin.Services.Contracts;
+@using DWShop.Web.Common.Models;
+@inject IProductService productService
+@inject NavigationManager navigationManager
+
+<h3>ProductEdit</h3>
+@if (Product is null)
+{
+    <h2>Cargando...</h2>
+}
+else
+{
+
+    <EditForm Model="Product" OnValidSubmit="SaveChanges" method="post">
+        <DataAnnotationsValidator />
+
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <InputText @bind-Value="Product.Name" class="form-control"></InputText>
+            <ValidationMessage For="()=>Product.Name"></ValidationMessage>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripcion</label>
+            <InputText @bind-Value="Product.Description" class="form-control"></InputText>
+            <ValidationMessage For="()=>Product.Description"></ValidationMessage>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Categoria</label>
+            <InputText @bind-Value="Product.Category" class="form-control"></InputText>
+            <ValidationMessage For="()=>Product.Category"></ValidationMessage>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">URL foto</label>
+            <InputText @bind-Value="Product.PhotoURL" class="form-control"></InputText>
+            <ValidationMessage For="()=>Product.PhotoURL"></ValidationMessage>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripcion larga</label>
+            <InputText @bind-Value="Product.Summary" class="form-control"></InputText>
+            <ValidationMessage For="()=>Product.Summary"></ValidationMessage>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Precio</label>
+            <InputNumber @bind-Value="Product.Price" class="form-control"></InputNumber>
+            <ValidationMessage For="()=>Product.Price"></ValidationMessage>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    </EditForm>
+
+}
+
+
+@code {
+    [Parameter]
+    public int ProductId { get; set; }
+
+    public Product? Product { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        Product = await productService.GetProduct(ProductId);
+    }
+
+    private async Task SaveChanges()
+    {
+        await productService.EditProduct(Product);
+        navigationManager.NavigateTo("/Products",true);
+
+    }
+
+}

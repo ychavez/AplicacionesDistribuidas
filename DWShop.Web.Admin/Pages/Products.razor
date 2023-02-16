@@ -10,43 +10,48 @@
 
 <div class="row">
 
-<h3>Products</h3>
+    <h3>Products</h3>
 
-@if (productList is not null)
-{
+    @if (productList is not null)
+    {
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Categoria</th>
-                <th>Desctipcion</th>
-                <th>Precio</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            @foreach (var product in productList)
-            {
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>
-                        @product.Name
-                    </td>
-                    <td>
-                        @product.Category
-                    </td>
-                    <td>
-                        @product.Description
-                    </td>
-                    <td>
-                        @product.Price
-                    </td>
+                    <th>Nombre</th>
+                    <th>Categoria</th>
+                    <th>Desctipcion</th>
+                    <th>Precio</th>
+                    <th></th>
                 </tr>
-            }
+            </thead>
+            <tbody>
 
-        </tbody>
-    </table>
-}
+                @foreach (var product in productList)
+                {
+                    <tr>
+                        <td>
+                            @product.Name
+                        </td>
+                        <td>
+                            @product.Category
+                        </td>
+                        <td>
+                            @product.Description
+                        </td>
+                        <td>
+                            @product.Price
+                        </td>
+                        <td>
+                            <a class="btn btn-warning" href="/productedit/@product.Id">Editar</a>
+                            <a class="btn btn-danger" href="/delete/@product.Id">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    }
 
 </div>
 
