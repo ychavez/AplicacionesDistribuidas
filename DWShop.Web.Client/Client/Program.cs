@@ -1,4 +1,4 @@
-using DWShop.Web.Client;
+using Blazored.LocalStorage;
 using DWShop.Web.Client.Services;
 using DWShop.Web.Client.Services.Contracts;
 using Microsoft.AspNetCore.Components.Web;
@@ -20,6 +20,7 @@ namespace DWShop.Web.Client
 
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<IBasketService, BasketService>();
+            builder.Services.AddBlazoredLocalStorage();
 
             await builder.Build().RunAsync();
         }

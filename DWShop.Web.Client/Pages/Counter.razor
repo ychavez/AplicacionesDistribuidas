@@ -1,4 +1,6 @@
 ﻿@page "/counter"
+@using Blazored.LocalStorage;
+@inject ILocalStorageService localStorageService
 
 <PageTitle>Counter</PageTitle>
 
@@ -6,13 +8,32 @@
 
 <p role="status">Current count: @currentCount</p>
 
+<p role="status">Current count: @Nombre</p>
+
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-primary" @onclick="Limpiar">Limpiar</button>
+       
 
 @code {
     private int currentCount = 0;
+    public string Nombre { get; set; } = "";
 
-    private void IncrementCount()
+    private async Task IncrementCount()
     {
         currentCount++;
+
+        await localStorageService.SetItemAsync("PruebaLocal", "Yael");
+        Nombre = await localStorageService.GetItemAsStringAsync("PruebaLocal");
     }
+    protected override async Task OnInitializedAsync()
+    {
+        Nombre = await localStorageService.GetItemAsStringAsync("PruebaLocal");
+    }
+
+    private async Task Limpiar()
+    {
+        await localStorageService.ContainKeyAsync("Prueba"); // valida sui esxiste la llave en el diccionario
+        await localStorageService.RemoveItemAsync("PruebaLocal"); // quita un solo registro
+        await localStorageService.ClearAsync(); // borra todos los registros
+      }
 }
